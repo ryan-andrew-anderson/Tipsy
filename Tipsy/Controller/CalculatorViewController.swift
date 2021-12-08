@@ -21,10 +21,11 @@ class CalculatorViewController: UIViewController {
     var tipPct = 0.00
     var theSplit = 2.00
     var totalPerPerson = 0.00
+    var tipText : String?
     
     @IBAction func tipChanged(_ sender: UIButton) {
         
-        guard let text = billTextField.text, text != "" else { return }
+        guard let text = billTextField.text, text != "", let tipTitle = sender.currentTitle else { return }
         total = Double(text)!
         //        billTextField.endEditing(true)
         billTextField.resignFirstResponder()
@@ -34,8 +35,8 @@ class CalculatorViewController: UIViewController {
         
         sender.isSelected = true
         
-        let tipText = sender.currentTitle!
-        let tip = tipText.dropLast()
+         tipText = tipTitle
+        let tip = tipTitle.dropLast()
         let tipDouble = Double(tip)!
         
         self.tipPct = tipDouble / 100
@@ -53,7 +54,16 @@ class CalculatorViewController: UIViewController {
         if bill != "" {
             let totalPlusTip = (total * tipPct) + total
             totalPerPerson = totalPlusTip / theSplit
+            print(totalPerPerson)
             print(String(format: "%.2f", totalPerPerson))
+            performSegue(withIdentifier: "nextSlide", sender: self)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "nextSlide" {
+            let vc = segue.destination as! ResultsViewController
+            vc.total = String(format: "%.2f", totalPerPerson)
+            vc.setting = "Split between \(Int(theSplit)), with \(tipText ?? "") tip."
         }
     }
 }
