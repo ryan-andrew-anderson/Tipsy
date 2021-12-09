@@ -9,7 +9,7 @@ The goal of this challenge is to use what I have learned about Optionals and the
 
 ## Challenges I had
 
-.....
+My main challenges was working with Segues. Being able to use Segues to present another scene and passing user input data from one one viewController to another.
 
 
 >This is a companion project to The App Brewery's Complete App Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
