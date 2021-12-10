@@ -13,6 +13,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var billTextField: UITextField!
     @IBOutlet weak var zeroPctButton: UIButton!
     @IBOutlet weak var tenPctButton: UIButton!
+    @IBOutlet weak var fifteenPctButton: UIButton!
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
     
@@ -26,6 +27,7 @@ class CalculatorViewController: UIViewController {
         billTextField.resignFirstResponder()
         zeroPctButton.isSelected = false
         tenPctButton.isSelected = false
+        fifteenPctButton.isSelected = false
         twentyPctButton.isSelected = false
         
         sender.isSelected = true
